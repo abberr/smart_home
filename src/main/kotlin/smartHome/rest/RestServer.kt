@@ -2,13 +2,15 @@ package smartHome.rest
 
 import io.javalin.Javalin
 import smartHome.services.*
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 
 
 fun main(args: Array<String>) {
     val app = Javalin.create().start(8080)
 
     app.before("*") { ctx ->
-        println("[${ctx.host()}], [${ctx.ip()}] calling [${ctx.path()}] with body [${ctx.body()}]")
+        println("${DateTimeFormatter.ISO_INSTANT.format(Instant.now())} - [${ctx.ip()}] calling [${ctx.path()}] with body [${ctx.body()}]")
     }
 
     app.get("/") { ctx -> ctx.result("Hello World") }
