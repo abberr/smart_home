@@ -1,6 +1,7 @@
 package smartHome.services
 
 import java.io.File
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 val protocol = 4
@@ -19,14 +20,8 @@ fun deviceOff(id : Int) {
 }
 
 fun sendCode(code: String) {
-  Runtime.getRuntime().exec("src/main/resources/codesend.sh $code $protocol")
+  val proc = Runtime.getRuntime().exec("src/main/resources/codesend $code $protocol")  // testing on Windows 10
+  Scanner(proc.inputStream).use {
+    while (it.hasNextLine()) println(it.nextLine())
+  }
 }
-
-//fun String.runCommand(workingDir: File) {
-//  ProcessBuilder(*split(" ").toTypedArray())
-//    .directory(workingDir)
-//    .redirectOutput(ProcessBuilder.Redirect.INHERIT)
-//    .redirectError(ProcessBuilder.Redirect.INHERIT)
-//    .start()
-//    .waitFor(60, TimeUnit.MINUTES)
-//}
