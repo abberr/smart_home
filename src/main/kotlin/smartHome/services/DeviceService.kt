@@ -1,8 +1,6 @@
 package smartHome.services
 
-import java.io.File
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 val protocol = 4
 val codes_on = arrayOf("658800", "587188")
