@@ -3,8 +3,8 @@ package smartHome.services
 import java.util.*
 
 val protocol = 4
-val codes_on = arrayOf("658800", "587188", "587196", "448418")
-val codes_off = arrayOf("151184", "99108", "151196", "587186")
+val codes_on = arrayOf("658800", "587188", "658812", "448418")
+val codes_off = arrayOf("151184", "99108", "448428", "587186")
 
 
 fun deviceOn(id : Int) {
