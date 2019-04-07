@@ -3,8 +3,8 @@ package smartHome.services
 import java.util.*
 
 val protocol = 4
-val codes_on = arrayOf("658800", "587188")
-val codes_off = arrayOf("151184", "99108")
+val codes_on = arrayOf("658800", "587188", "587196", "448418")
+val codes_off = arrayOf("151184", "99108", "151196", "587186")
 
 
 fun deviceOn(id : Int) {
@@ -18,7 +18,7 @@ fun deviceOff(id : Int) {
 }
 
 fun sendCode(code: String) {
-  val proc = Runtime.getRuntime().exec("src/main/resources/codesend $code $protocol")  // testing on Windows 10
+  val proc = Runtime.getRuntime().exec("src/main/resources/codesend $code $protocol")
   Scanner(proc.inputStream).use {
     while (it.hasNextLine()) println(it.nextLine())
   }

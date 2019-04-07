@@ -13,8 +13,6 @@ fun main(args: Array<String>) {
         println("${DateTimeFormatter.ISO_INSTANT.format(Instant.now())} - [${ctx.ip()}] calling [${ctx.path()}] with body [${ctx.body()}]")
     }
 
-    app.get("/") { ctx -> ctx.result("Hello World") }
-
     app.post("/device/:id") { ctx ->
         val body = ctx.body()
         val deviceId = ctx.pathParam("id").toInt()
@@ -28,8 +26,5 @@ fun main(args: Array<String>) {
             ctx.status(500)
             ctx.result("Must be 1 or 0")
         }
-    }
-    app.get("/device/*") { ctx ->
-        ctx.result("1")
     }
 }
